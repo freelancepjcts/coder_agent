@@ -1,0 +1,415 @@
+{
+  "info": {
+    "_postman_id": "b2dc486f-54c7-4ba6-8d44-941432fbeab8",
+    "name": "python full stack app",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7799466"
+  },
+  "item": [
+    {
+      "name": "airport",
+      "item": [
+        {
+          "name": "GetAll airport",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"code\": \"KWI\",\r\n \"name\":\"Kuwait international\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "airport",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n      \"code\": \"KWI\",\r\n      \"name\": \"Kuwait Intrn.\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/airport",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "airport"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "airline",
+      "item": [
+        {
+          "name": "GetAll airlines",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"label\": \"My Flight\",\r\n \"airline_code\":\"A101\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "airlines",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n      \"code\": \"A320\",\r\n      \"description\": \"Airbus A320\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/airlines",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "airlines"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "scheduled-options",
+      "item": [
+        {
+          "name": "schedule option create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"label\": \"My Flight\",\r\n \"airline_code\":\"A102\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/schedule-options/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "schedule-options",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "gates",
+      "item": [
+        {
+          "name": "create gates",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"airport\": \"KWI\",\r\n  \"gate\": \"C5\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/gates",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "gates"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get gates",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"airport\": \"KWI\",\r\n  \"gate\": \"C1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/gates?airport=KWI",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "gates"
+              ],
+              "query": [
+                {
+                  "key": "airport",
+                  "value": "KWI"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "flight-natures",
+      "item": [
+        {
+          "name": "GetAll flight nature",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"label\": \"My Flight\",\r\n \"airline_code\":\"A101\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/flight-nature",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "flight-nature"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "flightnature",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n      \"value\": \"SCHEDULED\",\r\n      \"label\": \"scheduled\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/flight-nature",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "flight-nature"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "schedule",
+      "item": [
+        {
+          "name": "schedule create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"conversation_id\":\"CONV_SS_002\", \r\n   \"message_id\":\"MSG_SS_001\", \r\n  \"airlineCode\": \"KU\",\r\n  \"aircraftType\": \"A320\",\r\n  \"fromDate\": \"2026-02-01\",\r\n  \"toDate\": \"2026-05-31\",\r\n  \"arrival\": {\r\n    \"serviceCode\":\"AS01\",\r\n    \"flightNumber\": \"KU101\",\r\n    \"gate\": \"A3\",\r\n    \"routes\": [\r\n      { \"leg\": 1, \"origin\": \"AUH\", \"destination\": \"KWI\" }\r\n    ],\r\n    \"arrivalDays\": [1,3,5],\r\n    \"sta\": \"2026-02-01T09:30:00Z\",\r\n    \"arrivalNature\": \"REG\",\r\n    \"eta\": \"2026-02-01T09:30:00Z\",\r\n    \"ata\": \"2026-02-01T09:30:00Z\",\r\n    \"sta_lt\": \"12:30:00\",\r\n    \"sta_request\": \"12:30:00\",\r\n    \"arrival_service_code\":\"AXB\"\r\n  },\r\n  \"departure\": {\r\n    \"serviceCode\":\"DS10\",\r\n    \"flightNumber\": \"KU102\",\r\n    \"gate\": \"A3\",\r\n    \"routes\": [\r\n      { \"leg\": 1, \"origin\": \"KWI\", \"destination\": \"AUH\" }\r\n    ],\r\n    \"departureDays\": [1,3,5],\r\n    \"std\": \"2026-02-01T10:30:00Z\",\r\n    \"departureNature\": \"REG\",\r\n    \"etd\": \"2026-02-01T10:30:00Z\",\r\n    \"atd\": \"2026-02-01T10:30:00Z\",\r\n    \"std_lt\": \"13:30:00\",\r\n    \"std_request\": \"13:30:00\",\r\n    \"departure_service_code\":\"DXB\"\r\n\r\n  },\r\n  \"overnight_indicator\":0,\r\n  \"approval\": \"Confirm\",\r\n  \"ref\": \"2026-02-01T10:30:00Z\",\r\n  \"last_update\": \"2026-01-15T08:00:00Z\",\r\n  \"meta\": {\r\n    \"createdBy\": \"userId123\"\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/schedules",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "schedules"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "schedule Get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"conversation_id\":\"AI_1\",  \r\n  \"airlineCode\": \"KU\",\r\n  \"aircraftType\": \"A320\",\r\n  \"fromDate\": \"2026-02-01\",\r\n  \"toDate\": \"2026-05-31\",\r\n  \"arrival\": {\r\n    \"flightNumber\": \"KU101\",\r\n    \"gate\": \"A3\",\r\n    \"routes\": [\r\n      { \"leg\": 1, \"origin\": \"AUH\", \"destination\": \"KWI\" }\r\n    ],\r\n    \"arrivalDays\": [1,3,5],\r\n    \"sta\": \"2026-02-01T09:30:00Z\",\r\n    \"arrivalNature\": \"SCHEDULED\",\r\n    \"eta\": \"2026-02-01T09:30:00Z\",\r\n    \"ata\": \"2026-02-01T09:30:00Z\",\r\n    \"sta_lt\": \"12:30:00\",\r\n    \"sta_request\": \"12:30:00\",\r\n    \"arrival_service_code\":\"A101\"\r\n  },\r\n  \"departure\": {\r\n    \"flightNumber\": \"KU102\",\r\n    \"gate\": \"A3\",\r\n    \"routes\": [\r\n      { \"leg\": 1, \"origin\": \"KWI\", \"destination\": \"AUH\" }\r\n    ],\r\n    \"departureDays\": [1,3,5],\r\n    \"std\": \"2026-02-01T10:30:00Z\",\r\n    \"departureNature\": \"SCHEDULED\",\r\n    \"etd\": \"2026-02-01T10:30:00Z\",\r\n    \"atd\": \"2026-02-01T10:30:00Z\",\r\n    \"std_lt\": \"13:30:00\",\r\n    \"std_request\": \"13:30:00\",\r\n    \"departure_service_code\":\"D101\"\r\n\r\n  },\r\n  \"overnight_indicator\":0,\r\n  \"approval\": \"Confirm\",\r\n  \"ref\": \"2026-02-01T10:30:00Z\",\r\n  \"last_update\": \"2026-01-15T08:00:00Z\",\r\n  \"meta\": {\r\n    \"createdBy\": \"userId123\"\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/schedules/33",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "schedules",
+                "33"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

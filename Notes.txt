@@ -1,0 +1,92 @@
+pip install fastapi uvicorn
+pip install fastapi uvicorn sqlalchemy psycopg2-binary
+
+
+db/session.py keep port 5432
+
+Import the collection in the root to postman 
+uvicorn app.main:app --reload
+
+
+Swagger:
+http://127.0.0.1:8000/docs
+
+create script
+--------------
+CREATE TABLE airports (
+    iata_code        VARCHAR(10) PRIMARY KEY,
+    full_name        VARCHAR(255) NOT NULL,
+    full_name_arabic VARCHAR(255),
+    country          VARCHAR(100) NOT NULL,
+    country_arabic   VARCHAR(100)
+);
+
+INSERT INTO airports (iata_code, full_name, full_name_arabic, country, country_arabic)
+VALUES
+('KWI', 'Kuwait International Airport', 'arabic-Kuwait International Airport', 'Kuwait', 'Kuwait');
+
+INSERT INTO airports (iata_code, full_name, full_name_arabic, country, country_arabic)
+VALUES
+('DXB', 'Dubai International Airport', 'arabic-Dubai International Airport', 'United Arab Emirates', 'United Arab Emirates');
+
+INSERT INTO airports (iata_code, full_name, full_name_arabic, country, country_arabic)
+VALUES
+('DOH', 'Hamad International Airport', 'arabic-Hamad International Airport', 'Qatar', 'Qatar');
+
+INSERT INTO airports (iata_code, full_name, full_name_arabic, country, country_arabic)
+VALUES
+('RUH', 'King Khalid International Airport', 'arabic-King Khalid International Airport', 'Saudi Arabia', 'Saudi Arabia');
+
+INSERT INTO airports (iata_code, full_name, full_name_arabic, country, country_arabic)
+VALUES
+('DEL', 'Indira Gandhi International Airport', 'arabic-Indira Gandhi International Airport', 'India', 'India');
+
+
+Endpoints for slot-request-daily
+--------------------------------
+GET http://127.0.0.1:8000/api/slot-requests-daily/airport?airport_code=DOH
+
+
+POST http://127.0.0.1:8000/api/slot-requests-daily
+{
+  "conversation_id": "conv-1",
+  "message_id": "MSG-TE-001",
+  "senders_email": "ops@airline.com",
+  "senders_subject": "Slot",
+  "kuwait_local_airway": true,
+  "season": "S26",
+  "date_of_message": "2026-02-05",
+  "iata_airport_code": "KWI",
+  "action_code": "NEW",
+  "arrival_date": "2026-02-10",
+  "departure_date": "2026-02-10",
+  "ai_code": "KU",
+  "reg": "9K-AAB",
+  "ac_code": "A320",
+  "seat": 150,
+  "arr_flt": "KU101",
+  "dep_flt": "KU102",
+  "a_route1": "DOH",
+  "d_route1": "KWI",
+  "arr_days": "1234567",
+  "dep_days": "1234567",
+  "sta": "2026-02-10T10:30:00",
+  "eta": "2026-02-10T10:20:00",
+  "ata": "2026-02-10T10:35:00",
+  "std": "2026-02-10T12:00:00",
+  "etd": "2026-02-10T12:10:00",
+  "atd": "2026-02-10T12:05:00",
+  "sta_lt": "10:30:00",
+  "std_lt": "12:00:00",
+  "overnight_indicator": 0,
+  "arrival_service_code": "J",
+  "departure_service_code": "J",
+  "arr_natu": "S",
+  "dep_natu": "S",
+  "arr_natu_full": "Scheduled",
+  "dep_natu_full": "Scheduled",
+  "approval_status": "PENDING",
+  "ref": "2026-02-05T09:00:00",
+  "last_update": "2026-02-05T09:00:00",
+  "ac_body_type": "NB"
+}
