@@ -90,3 +90,6 @@ POST http://127.0.0.1:8000/api/slot-requests-daily
   "last_update": "2026-02-05T09:00:00",
   "ac_body_type": "NB"
 }
+-------------------------------------------------------
+ALTER TABLE public.landing_and_parking ALTER COLUMN ref SET DEFAULT now();
+ALTER TABLE public.landing_and_parking ALTER COLUMN lastupdate SET DEFAULT now();

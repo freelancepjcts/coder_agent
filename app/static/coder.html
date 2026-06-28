@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Agent Workspace</title>
+    <!-- Outfit Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/coder_style.css">
+</head>
+
+<body>
+    <div class="workspace-container">
+        <!-- 1. LEFT SIDEBAR -->
+        <aside class="sidebar-left">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="shopping-bag" class="logo-icon"></i>
+                    <span>ShopBot<span class="logo-accent">.ai</span></span>
+                </div>
+            </div>
+            <div class="sidebar-content">
+
+                <div class="info-card memory-card">
+                    <h3>Persistent Session Memory</h3>
+                    <p>Memory is tracked using a <code>thread_id</code>, allowing ShopBot to recall context like your
+                        name across messages.</p>
+                    <div class="thread-info">
+                        <span class="label">Session ID:</span>
+                        <div class="thread-id-display">
+                            <span id="thread-id-val">Generating...</span>
+                            <button id="copy-thread-btn" title="Copy Thread ID">
+                                <i data-lucide="copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="reset-session-btn" class="btn btn-secondary">
+                        <i data-lucide="refresh-cw"></i> New Session
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <span class="status-indicator">
+                    <span class="status-dot"></span>
+                    API Connected
+                </span>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN WORKSPACE (CHAT) -->
+        <main class="main-workspace">
+            <header class="workspace-header">
+                <div class="header-info">
+                    <button class="btn-icon" id="toggle-left-panel" title="Toggle Sidebar Left"
+                        style="margin-right: 8px;">
+                        <i data-lucide="layout-sidebar-open"></i>
+                    </button>
+                    <h1>AI Coding Agent</h1>
+                    <span class="status-badge"><span class="dot"></span>Ready</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="toggle-right-panel" title="Toggle Sidebar">
+                        <i data-lucide="layout-sidebar"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-messages" id="chat-container">
+                <!-- User Message -->
+                <div class="chat-bubble user-bubble">
+                    <div class="bubble-avatar">👤</div>
+                    <div class="bubble-content">
+                        <p>Generate a Java program to check palindrome.</p>
+                    </div>
+                </div>
+
+                <!-- Assistant Response Card 1 (Buggy Code Generation) -->
+                <div class="chat-bubble assistant-bubble" id="assistant-bubble-v1">
+                    <div class="bubble-avatar">🤖</div>
+                    <div class="bubble-content">
+                        <div class="elegant-card">
+                            <div class="card-header border-success">
+                                <div class="header-title">
+                                    <span class="badge-success-circle">✓</span>
+                                    <h3>Java Program Generated</h3>
+                                </div>
+                                <span class="card-meta">Version 1</span>
+                            </div>
+                            <div class="card-body">
+                                <!-- Code Editor Wrapper -->
+                                <div class="code-editor-container">
+                                    <div class="code-header">
+                                        <div class="lang-selector">
+                                            <i data-lucide="code-2"></i>
+                                            <span>Java</span>
+                                        </div>
+                                        <div class="code-actions">
+                                            <button class="btn-code-action" onclick="copyCode(1)" title="Copy Code">
+                                                <i data-lucide="copy"></i> Copy
+                                            </button>
+                                            <button class="btn-code-action" title="Download File">
+                                                <i data-lucide="download"></i> Download
+                                            </button>
+                                            <button class="btn-code-action" id="collapse-code-btn"
+                                                title="Toggle Collapse">
+                                                <i data-lucide="chevrons-up-down"></i> Expand
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="code-body" id="code-body-1">
+                                        <pre class="line-numbers">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre>
+                                        <pre class="code-content"><code class="language-java">public class Palindrome {
+    public static boolean isPalindrome(String str) {
+        if (str == null) return false;
+        
+        // Check letters (case-insensitive)
+        str = str.toLowerCase();
+        
+        // Bug: It always returns true regardless of mismatches!
+        return true; 
+    }
+}</code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Action Buttons Below Code -->
+                                <div class="action-grid-buttons">
+                                    <button class="btn-action btn-action-primary" id="btn-run-auto-tests">
+                                        <i data-lucide="play"></i> Run Auto Tests
+                                    </button>
+                                    <button class="btn-action btn-action-secondary" id="btn-manual-test">
+                                        <i data-lucide="flask-conical"></i> Manual Test
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulation States (Generated Dynamically via JS) -->
+                <div id="dynamic-simulation-flow"></div>
+            </div>
+
+            <footer class="workspace-footer">
+
+                <form class="prompt-input-form" id="prompt-form">
+                    <input type="text" placeholder="Ask AI Coding Agent to improve or modify code..." id="prompt-input"
+                        autocomplete="off">
+                    <button type="submit" class="btn-send"><i data-lucide="send"></i></button>
+                </form>
+            </footer>
+        </main>
+
+        <!-- 4. SLIDING SIDE DRAWER (MANUAL TEST FLOW) -->
+        <div class="drawer-overlay" id="manual-test-drawer-overlay"></div>
+        <div class="side-drawer" id="manual-test-drawer">
+            <div class="drawer-header">
+                <h2>Manual Testing</h2>
+                <button class="btn-close-drawer" id="close-drawer-btn">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="form-group">
+                    <label for="manual-input">Program Input</label>
+                    <textarea id="manual-input" rows="4" placeholder="Enter string (e.g. hello)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="manual-expected">Expected Output (Optional)</label>
+                    <input type="text" id="manual-expected" placeholder="Expected result (e.g. false)">
+                </div>
+                <div class="drawer-actions">
+                    <button class="btn btn-primary-coder" id="run-manual-test-btn">Run Test</button>
+                    <button class="btn btn-secondary-coder" id="clear-manual-test-btn">Clear</button>
+                </div>
+
+                <!-- Result Area -->
+                <div class="manual-result-card" id="manual-result-card" style="display: none;">
+                    <h4>Manual Result</h4>
+                    <div class="result-row">
+                        <span class="result-label">Output:</span>
+                        <span class="result-val font-mono" id="manual-output-val">TRUE</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="result-label">Status:</span>
+                        <span class="status-badge-coder" id="manual-status-badge">PASS</span>
+                    </div>
+
+                    <div class="fail-details" id="manual-fail-details" style="display: none;">
+                        <hr>
+                        <div class="result-row">
+                            <span class="result-label">Expected:</span>
+                            <span class="result-val font-mono" id="manual-fail-expected">false</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-label">Actual:</span>
+                            <span class="result-val font-mono" id="manual-fail-actual">true</span>
+                        </div>
+                        <p class="fail-reason" id="manual-fail-reason">Reason: Output matches 'true' for a
+                            non-palindrome input.</p>
+                        <button class="btn btn-danger-coder" id="manual-drawer-fix-btn">Fix Program</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/coder_app.js"></script>
+</body>
+
+</html>

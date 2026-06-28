@@ -356,7 +356,7 @@
               }
             },
             "url": {
-              "raw": "http://127.0.0.1:8000/api/schedules",
+              "raw": "http://127.0.0.1:8000/api/schedules/create",
               "protocol": "http",
               "host": [
                 "127",
@@ -367,7 +367,8 @@
               "port": "8000",
               "path": [
                 "api",
-                "schedules"
+                "schedules",
+                "create"
               ]
             }
           },
@@ -404,6 +405,323 @@
                 "api",
                 "schedules",
                 "33"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "slot-request-daily",
+      "item": [
+        {
+          "name": "Create Slot-daily",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"conversation_id\": \"conv-1\",\r\n  \"message_id\": \"MSG-TE-001\",\r\n  \"senders_email\": \"ops@airline.com\",\r\n  \"senders_subject\": \"Slot\",\r\n  \"kuwait_local_airway\": true,\r\n  \"season\": \"S26\",\r\n  \"date_of_message\": \"2026-02-05\",\r\n  \"iata_airport_code\": \"KWI\",\r\n  \"action_code\": \"NEW\",\r\n  \"arrival_date\": \"2026-02-10\",\r\n  \"departure_date\": \"2026-02-10\",\r\n  \"ai_code\": \"KU\",\r\n  \"reg\": \"9K-AAB\",\r\n  \"ac_code\": \"A320\",\r\n  \"seat\": 150,\r\n  \"arr_flt\": \"KU101\",\r\n  \"dep_flt\": \"KU102\",\r\n  \"a_route1\": \"DOH\",\r\n  \"d_route1\": \"KWI\",\r\n  \"arr_days\": \"1234567\",\r\n  \"dep_days\": \"1234567\",\r\n  \"sta\": \"2026-02-10T10:30:00\",\r\n  \"eta\": \"2026-02-10T10:20:00\",\r\n  \"ata\": \"2026-02-10T10:35:00\",\r\n  \"std\": \"2026-02-10T12:00:00\",\r\n  \"etd\": \"2026-02-10T12:10:00\",\r\n  \"atd\": \"2026-02-10T12:05:00\",\r\n  \"sta_lt\": \"10:30:00\",\r\n  \"std_lt\": \"12:00:00\",\r\n  \"overnight_indicator\": 0,\r\n  \"arrival_service_code\": \"J\",\r\n  \"departure_service_code\": \"J\",\r\n  \"arr_natu\": \"S\",\r\n  \"dep_natu\": \"S\",\r\n  \"arr_natu_full\": \"Scheduled\",\r\n  \"dep_natu_full\": \"Scheduled\",\r\n  \"approval_status\": \"PENDING\",\r\n  \"ref\": \"2026-02-05T09:00:00\",\r\n  \"last_update\": \"2026-02-05T09:00:00\",\r\n  \"ac_body_type\": \"NB\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/slot-requests-daily/create",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-requests-daily",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get slot req daily by airport",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"conversation_id\": \"conv-1\",\r\n  \"message_id\": \"MSG-TE-001\",\r\n  \"senders_email\": \"ops@airline.com\",\r\n  \"senders_subject\": \"Slot\",\r\n  \"kuwait_local_airway\": true,\r\n  \"season\": \"S26\",\r\n  \"date_of_message\": \"2026-02-05\",\r\n  \"iata_airport_code\": \"KWI\",\r\n  \"action_code\": \"NEW\",\r\n  \"arrival_date\": \"2026-02-10\",\r\n  \"departure_date\": \"2026-02-10\",\r\n  \"ai_code\": \"KU\",\r\n  \"reg\": \"9K-AAB\",\r\n  \"ac_code\": \"A320\",\r\n  \"seat\": 150,\r\n  \"arr_flt\": \"KU101\",\r\n  \"dep_flt\": \"KU102\",\r\n  \"a_route1\": \"DOH\",\r\n  \"d_route1\": \"KWI\",\r\n  \"arr_days\": \"1234567\",\r\n  \"dep_days\": \"1234567\",\r\n  \"sta\": \"2026-02-10T10:30:00\",\r\n  \"eta\": \"2026-02-10T10:20:00\",\r\n  \"ata\": \"2026-02-10T10:35:00\",\r\n  \"std\": \"2026-02-10T12:00:00\",\r\n  \"etd\": \"2026-02-10T12:10:00\",\r\n  \"atd\": \"2026-02-10T12:05:00\",\r\n  \"sta_lt\": \"10:30:00\",\r\n  \"std_lt\": \"12:00:00\",\r\n  \"overnight_indicator\": 0,\r\n  \"arrival_service_code\": \"J\",\r\n  \"departure_service_code\": \"J\",\r\n  \"arr_natu\": \"S\",\r\n  \"dep_natu\": \"S\",\r\n  \"arr_natu_full\": \"Scheduled\",\r\n  \"dep_natu_full\": \"Scheduled\",\r\n  \"approval_status\": \"PENDING\",\r\n  \"ref\": \"2026-02-05T09:00:00\",\r\n  \"last_update\": \"2026-02-05T09:00:00\",\r\n  \"ac_body_type\": \"NB\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/slot-requests-daily/airport?airport_code=DOH",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-requests-daily",
+                "airport"
+              ],
+              "query": [
+                {
+                  "key": "airport_code",
+                  "value": "DOH"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Full search - Seat Schedules Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"schedule\": \"SUMMER-25\",\r\n  \"from_date\": \"2025-03-01\",\r\n  \"to_date\": \"2025-03-28\",\r\n  \"excluding_airline\": \"QR\",\r\n  \"terminal\": \"KWI\",\r\n  \"slot_start\": \"05:00:00\",\r\n  \"slot_end\": \"12:00:00\",\r\n  \"days\": [5]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/slot-requests-daily/seat-schedules/view",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-requests-daily",
+                "seat-schedules",
+                "view"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Slot search - Seat Schedules",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"slot_start\": \"07:00:00\",\r\n    \"slot_end\": \"12:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/slot-requests-daily/seat-schedules/view",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-requests-daily",
+                "seat-schedules",
+                "view"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Terminal search - Seat Schedules",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"terminal\": \"KWI\",\r\n  \"days\": [6]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/slot-requests-daily/seat-schedules/view",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-requests-daily",
+                "seat-schedules",
+                "view"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Landing and parking",
+      "item": [
+        {
+          "name": "create landing",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"conversation_id\": \"CONV-2026-0001\",\r\n  \"message_id\": \"MSG-987654\",\r\n  \"senders_email\": \"ops@airline.com\",\r\n  \"senders_subject\": \"Landing and Parking Permit Request\",\r\n\r\n  \"date_of_issue\": \"2026-02-12\",\r\n  \"clearance_no\": \"1678\",\r\n  \"yearly_flag\": false,\r\n\r\n  \"nature_of_flight\": \"Commercial\",\r\n  \"operator_name\": \"Kuwait Airways\",\r\n\r\n  \"contact_company\": \"Kuwait Airways\",\r\n  \"contact_name\": \"Ahmed Al Rashid\",\r\n  \"contact_phone\": \"+965-90000000\",\r\n\r\n  \"mofa_flag\": true,\r\n  \"charges_type\": \"Landing & Parking\",\r\n\r\n  \"parking_note\": \"Parking required for 24 hours\",\r\n  \"remarks\": \"First time operation\",\r\n\r\n  \"airline_code\": \"KAC\",\r\n  \"aircraft\": \"A320\",\r\n  \"aircraft_registration\": \"9K-AKG\",\r\n  \"call_sign\": \"KAC123\",\r\n\r\n  \"arrival_flight_no\": \"KU101\",\r\n  \"departure_flight_no\": \"KU102\",\r\n\r\n  \"arrival_route1\": \"DXB\",\r\n  \"arrival_route2\": \"KWI\",\r\n\r\n  \"departure_route1\": \"KWI\",\r\n  \"departure_route2\": \"DXB\",\r\n\r\n  \"sta\": \"2026-02-15T08:30:00+03:00\",\r\n  \"std\": \"2026-02-16T09:45:00+03:00\",\r\n\r\n  \"flag_for_review\": false,\r\n  \"remarks_for_review\": \"No remarks\",\r\n\r\n  \"approval_status\": \"Pending\",\r\n  \"request_type\": \"LandingAndParking\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/landing-parking/create",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "landing-parking",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Id - Search landing",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\":\"11\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/landing-parking/search",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "landing-parking",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "fromDate - toDate - Search landing Copy",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"date_of_issue_from\":\"2025-03-01\",\r\n  \"date_of_issue_to\":\"2026-03-28\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/landing-parking/search",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "landing-parking",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Slot-details",
+      "item": [
+        {
+          "name": "slot-details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/slot-details?page=2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "slot-details"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2"
+                }
               ]
             }
           },

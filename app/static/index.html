@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopBot — Premium Multi-Agent AI Assistant</title>
+    <!-- Outfit Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Features Panel -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="shopping-bag" class="logo-icon"></i>
+                    <span>ShopBot<span class="logo-accent">.ai</span></span>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="info-card">
+                    <h3>Multi-Agent Orchestration</h3>
+                    <p>Powered by LangGraph and Groq, ShopBot intelligently routes queries to specialized AI agents.</p>
+                    <div class="agent-list">
+                        <div class="agent-item" data-agent="faq_agent">
+                            <span class="badge badge-faq"></span>
+                            <div class="agent-info">
+                                <strong>FAQ Specialist</strong>
+                                <span>Returns, shipping, payments & policies</span>
+                            </div>
+                        </div>
+                        <div class="agent-item" data-agent="order_agent">
+                            <span class="badge badge-order"></span>
+                            <div class="agent-info">
+                                <strong>Order Specialist</strong>
+                                <span>Order tracking, status & delivery details</span>
+                            </div>
+                        </div>
+                        <div class="agent-item" data-agent="rec_agent">
+                            <span class="badge badge-rec"></span>
+                            <div class="agent-info">
+                                <strong>Shopping Specialist</strong>
+                                <span>Personalized product recommendations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card memory-card">
+                    <h3>Persistent Session Memory</h3>
+                    <p>Memory is tracked using a <code>thread_id</code>, allowing ShopBot to recall context like your name across messages.</p>
+                    <div class="thread-info">
+                        <span class="label">Session ID:</span>
+                        <div class="thread-id-display">
+                            <span id="thread-id-val">Generating...</span>
+                            <button id="copy-thread-btn" title="Copy Thread ID">
+                                <i data-lucide="copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="reset-session-btn" class="btn btn-secondary">
+                        <i data-lucide="refresh-cw"></i> New Session
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <span class="status-indicator">
+                    <span class="status-dot"></span>
+                    API Connected
+                </span>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <button class="mobile-toggle" id="mobile-sidebar-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="chat-header-info">
+                    <h2>ShopBot Chat</h2>
+                    <p>Ask about policies, check orders, or get personalized recommendations</p>
+                </div>
+                <div class="header-actions">
+                    <button id="mobile-reset-btn" class="btn btn-icon-only" title="New Session">
+                        <i data-lucide="refresh-cw"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-messages-container" id="chat-messages">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-logo">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <h1>Welcome to ShopBot</h1>
+                    <p>I am your smart shopping assistant. I can fetch your order statuses, guide you through policies, and make tailored hardware recommendations based on your purchases.</p>
+                    
+                    <div class="suggestions-container">
+                        <h3>Try asking one of these:</h3>
+                        <div class="suggestions-grid">
+                            <button class="suggestion-chip" data-query="What is your return policy?">
+                                <i data-lucide="help-circle"></i>
+                                <span>What is your return policy?</span>
+                            </button>
+                            <button class="suggestion-chip" data-query="Hi! I am Priya Patel. Can you check my order status?">
+                                <i data-lucide="package"></i>
+                                <span>Hi, I'm Priya. Check my orders?</span>
+                            </button>
+                            <button class="suggestion-chip" data-query="Recommend some accessories for Bob Smith">
+                                <i data-lucide="thumbs-up"></i>
+                                <span>Recommend products for Bob Smith</span>
+                            </button>
+                            <button class="suggestion-chip" data-query="Do you offer zero-cost EMI?">
+                                <i data-lucide="credit-card"></i>
+                                <span>Do you offer zero-cost EMI?</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default) -->
+            <div class="typing-indicator-container" id="typing-indicator">
+                <div class="typing-bubble">
+                    <div class="typing-avatar">🤖</div>
+                    <div class="typing-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Form -->
+            <footer class="chat-footer">
+                <form id="chat-form" class="chat-input-form">
+                    <input type="text" id="chat-input" placeholder="Ask ShopBot something..." autocomplete="off" required>
+                    <button type="submit" id="send-btn" class="btn btn-primary" title="Send Message">
+                        <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Load JS -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

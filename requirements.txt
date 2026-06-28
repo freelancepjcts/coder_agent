@@ -1,0 +1,15 @@
+openai>=1.30.0
+pytest>=8.0.0
+fastapi>=0.100.0
+uvicorn>=0.20.0
+langchain
+langchain-groq
+langchain-community
+langchain-core
+langgraph
+langchain-huggingface
+sentence-transformers
+sqlalchemy
+faiss-cpu
+gradio
+python-dotenv
