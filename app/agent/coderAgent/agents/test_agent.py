@@ -29,6 +29,9 @@ SYSTEM_PROMPTS = {
         "pytest unit tests covering normal cases and at least one edge case. "
         "Use plain assert statements. Return ONLY valid Python test code that "
         "imports the function(s) from a module named `generated_code`. "
+        "Important: The tests must pass against the code under test. Do not use generic placeholders "
+        "like 'expected_output' or 'expected_result' that will fail. Assert against the actual return "
+        "values and behavior implied by the provided code's logic. "
         "No explanations, no markdown fences."
     ),
     "sql": (

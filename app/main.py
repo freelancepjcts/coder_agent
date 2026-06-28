@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import HTMLResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from app.exceptions.handlers import exception_handler
 from app.routes import demo_controller, chat_controller
 
 app = FastAPI(title="My App")
+
+# CORS middleware configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Static files routing using standard Python file reading (requires no extra libraries like aiofiles)
 @app.get("/", response_class=HTMLResponse)
